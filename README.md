@@ -1,21 +1,32 @@
 Toy Robot Simulator
 ===================
 
-A toy robot simulator for a ruby challange
+Description:
+------------
+	The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
+	
+Run
+---
+	I have tested with Ubuntu 14.04 64 bit, ruby 1.9.3 (I know, only realised after I have completed, it is my home laptop).
+	
+	I tried not to complicate this project.
+	
+	All it needs ruby and handful of commands to run.
+	
+  To run, `ruby run.rb` from the project directory. It takes stdin as commands.
+  
+  I have also included some test data in test_data/.
+  
+  To run, `cat test_data/test_data.txt | ruby run.rb`
+	
+	To run tests, you will need bundler and rspec (bundle install), and run 'rspec' from the root.
 
-Design
-======
 
-run.rb
-	- Simulator
-		- ref Robot (@table)
-			- ref Command
-		- ref Position
 
 Algorithm
-=========
+---------
 
-Ok, this is the start, the following have changed a bit since I started writing tests, but it got me going.
+Ok, this was just the start, the following have changed a bit since I started writing tests, but it got me going.
 
 run.rb 
 	takes command input or file
