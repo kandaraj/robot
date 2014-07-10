@@ -59,12 +59,13 @@ describe Simulator do
   it('should report robot position') do
   	simulator.execute('Place 1,3,north') 
   	result = simulator.execute('report')
-	expect(result).to eq "OUTPUT: 1,3,north"
+	expect(result).to eq "Output: 1,3,NORTH"
   end
 
   it('should report nil for robot position') do
   	result = simulator.execute('report')
 	expect(result).to include 'no report'
   end
+
 
 end 

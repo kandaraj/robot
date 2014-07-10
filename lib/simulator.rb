@@ -27,10 +27,10 @@ class Simulator
 
 	when 'report'
 	  result = robot.coordinates
-	  output = result ? "OUTPUT: #{result[:x]},#{result[:y]},#{result[:face]}" : "no report"
+	  output = result ? "Output: #{result[:x]},#{result[:y]},#{result[:face].upcase}" : "no report"
 
 	else
-	  output = 'ERROR: invalid command'
+	  output = 'Error: invalid command'
     end
     output
   end
@@ -42,7 +42,7 @@ class Simulator
 	  x = Integer(coord[0]) 
 	  y = Integer(coord[1]) 
 	  face = 'north' if coord[2].nil? && x == 0 && y == 0	  	
-	  face = coord[2].to_s if face.nil? && coord[2].length > 0
+	  face = coord[2].to_s.downcase if face.nil? && coord[2].length > 0
 	  {:x=>x,:y=>y,:face=>face}
   	rescue Exception => e
   	  "invalid command #{e.message}"
