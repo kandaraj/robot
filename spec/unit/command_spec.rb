@@ -60,7 +60,6 @@ describe Command do
   	expected = {:x => 1, :y => 0, :face => :east}
   	expect(command.current_coordinates).to eq expected
   	command.turn('right')
-    p command.current_coordinates
   	command.move
   	expected = {:x => 1, :y => 0, :face => :south}
   	expect(command.current_coordinates).to eq expected
