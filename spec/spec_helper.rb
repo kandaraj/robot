@@ -1,3 +1,5 @@
 require 'rspec'
 require 'table'
 require 'position'
+require 'command'
+require 'robot'

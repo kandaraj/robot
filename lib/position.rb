@@ -6,8 +6,8 @@ class Position
     @table = Table.new(5,5)  
     @current_coordinates = nil
     @next_moves = {
-    		:row => {:west => 0, :east => 1, :north => 0, :south => -1},
-            :col => {:north => 1, :south => 0, :west => -1, :east => 0}
+    		:x => {:west => -1, :east => 1, :north => 0, :south => 0},
+            :y => {:north => 1, :south => -1, :west => 0, :east => 0}
           }
     @faces = {
         :left => {:north => :west, :west => :south, :south => :east, :east => :north},
@@ -22,8 +22,9 @@ class Position
 
   def change(coordinates)
     if @table.is_valid?(coordinates) 
-    	@current_coordinates = { :rows => coordinates[:rows], 
-        :cols => coordinates[:cols], 
+    	@current_coordinates = { 
+        :x => coordinates[:x] < 0 ? 0 : coordinates[:x] , 
+        :y => coordinates[:y] < 0 ? 0 : coordinates[:y], 
         :face => coordinates[:face] || :north 
         }
     end  
@@ -31,9 +32,9 @@ class Position
 
   def move
     if current 
-      new_row = current[:rows] + @next_moves[:row][current[:face]]
-      new_col = current[:cols] + @next_moves[:col][current[:face]]
-      change({:rows=>new_row,:cols=>new_col,:face=>current[:face]})
+      new_x = current[:x] + @next_moves[:x][current[:face]]
+      new_y = current[:y] + @next_moves[:y][current[:face]]
+      change({:x=>new_x,:y=>new_y,:face=>current[:face]})
     end
   end
 

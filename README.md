@@ -82,8 +82,8 @@ Position.rb
 		table = Table.new(5,5)	
 		current_coordinates = nil
 		face = :north
-		next_moves = {:row => {:west => -1, :east => 1, :north => 0, :south => 0},
-						:col => {:north => 1, :south => -1, :west => 0, :east => 0}
+		next_moves = {:x => {:west => -1, :east => 1, :north => 0, :south => 0},
+						:y => {:north => 1, :south => -1, :west => 0, :east => 0}
 					}
 		faces = {
 				:left => {:north => :west, :west => :south, :south => :east, :east => :north},
@@ -94,16 +94,16 @@ Position.rb
 		current_coordinates		
 
 	def change(coordinates)
-		current = { :rows => coordinates[:rows], 
-					:cols => coordinates[:cols], 
+		current = { :x => coordinates[:x], 
+					:y => coordinates[:y], 
 					:face => coordinates[:face] || :north 
 				}  if table.is_valid(coordinates)
 
 	def move
 		if current 
-			new_row = current[rows] + next_moves[:row[current[:face]]]
-			new_col = current[cols] + next_moves[:col[current[:face]]]
-			change({:rows=>new_row,:cols=>new_col,:face=>current[:face]})
+			new_row = current[rows] + next_moves[:x[current[:face]]]
+			new_col = current[cols] + next_moves[:y[current[:face]]]
+			change({:x=>new_row,:y=>new_col,:face=>current[:face]})
 		end
 
 	def turn(direction)
@@ -116,4 +116,4 @@ Table.rb
 		grid = Array.new(rows) { |i| Array.new(cols) { |i| 0 }}
 
 	def is_valid?(position)
-		return true if grid[position[:rows]] && grid[position[:rows]][position[:cols]]
+		return true if grid[position[:x]] && grid[position[:x]][position[:y]]
