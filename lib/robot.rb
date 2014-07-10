@@ -1,3 +1,5 @@
+# Robot to issue the command and moves within the table
+
 require_relative 'command'
 
 class Robot

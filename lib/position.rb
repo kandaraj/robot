@@ -1,8 +1,11 @@
+# A position holder for the robot 
+
 require_relative 'table'
 
 class Position
   attr_accessor :table, :current_coordinates, :faces, :next_moves
 
+  # sets the table size and orientation data
   def initialize 
     @table = Table.new(5,5)  
     @current_coordinates = nil
@@ -16,10 +19,12 @@ class Position
       }
   end
 
+  # returns current coordinates
   def current 
     @current_coordinates    
   end
 
+  # change the current coordinates to new coordinates
   def change(coordinates)
     if @table.is_valid?(coordinates) && @faces[:left][coordinates[:face]]
     	@current_coordinates = { 
@@ -30,6 +35,7 @@ class Position
     end  
   end
 
+  # make a move from current to next position
   def move
     if current 
       new_x = current[:x] + @next_moves[:x][current[:face]]
@@ -38,6 +44,7 @@ class Position
     end
   end
 
+  # makes the robot to turn his face to different position
   def turn(direction)
     current_coordinates[:face] = @faces[direction][current_coordinates[:face]] if @faces[direction] && current
   end

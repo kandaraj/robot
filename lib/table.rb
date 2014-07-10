@@ -1,3 +1,4 @@
+# A simple table to define the table for robot to move around
 
 class Table
   attr_reader :grid, :x, :y

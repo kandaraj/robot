@@ -1,3 +1,9 @@
+# Takes commands from stdin or from a file.
+# cat file | ruby run.rb
+# or
+# ruby run.rb => gets commands until intrepted
+
+
 require_relative 'lib/simulator'
 
 simulator = Simulator.new

@@ -1,3 +1,5 @@
+# Simulator takes series of commands and moves the robot.
+
 require_relative 'robot'
 
 class Simulator
@@ -7,6 +9,7 @@ class Simulator
     @robot = Robot.new  
   end
 
+  # executes the commands and return output for the report
   def execute(commands)
     command = commands.split
     output = nil
@@ -32,6 +35,7 @@ class Simulator
     output
   end
 
+  # works out from the command line and return the coordinates
   def coordinates(commands)
   	begin
 	  command = commands.split
