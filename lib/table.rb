@@ -1,7 +1,6 @@
 
 class Table
-  attr_accessor :grid
-  attr_reader :rows, :cols
+  attr_reader :grid, :rows, :cols
 
   # init the table with rows and cols
   def initialize(rows,cols)
@@ -12,7 +11,7 @@ class Table
 
   # check if the coordinates can fit into the table
   def is_valid?(position)
-	(position[:rows] < 0 || position[:cols] < 0 || position[:rows] >= @rows || position[:cols] >= @cols) ? false : true
+	  (position[:rows] < 0 || position[:cols] < 0 || position[:rows] >= @rows || position[:cols] >= @cols) ? false : true
   end
  
 end

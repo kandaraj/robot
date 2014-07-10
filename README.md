@@ -60,7 +60,6 @@ Robot.rb
 		command.current_coordinates
 
 Command.rb
-	attr: position
 
 	def initialise()
 		position = Position.new
@@ -78,8 +77,7 @@ Command.rb
 		position.current
 
 Position.rb
-	attr: table, current, next, face, left_faces, right_faces, next_moves
-
+ 
 	def initialise()
 		table = Table.new(5,5)	
 		current_coordinates = nil
@@ -113,9 +111,8 @@ Position.rb
 
 
 Table.rb
-	attr: grid
-
-	def initialise(rows,cols)
+ 
+ 	def initialise(rows,cols)
 		grid = Array.new(rows) { |i| Array.new(cols) { |i| 0 }}
 
 	def is_valid?(position)
