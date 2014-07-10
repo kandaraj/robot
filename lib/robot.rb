@@ -1,3 +1,5 @@
+require_relative 'command'
+
 class Robot
   attr :command
 

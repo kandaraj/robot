@@ -1,3 +1,4 @@
+require_relative 'table'
 
 class Position
   attr_accessor :table, :current_coordinates, :faces, :next_moves
@@ -15,17 +16,16 @@ class Position
       }
   end
 
-
   def current 
     @current_coordinates    
   end
 
   def change(coordinates)
-    if @table.is_valid?(coordinates) 
+    if @table.is_valid?(coordinates) && @faces[:left][coordinates[:face]]
     	@current_coordinates = { 
         :x => coordinates[:x] < 0 ? 0 : coordinates[:x] , 
         :y => coordinates[:y] < 0 ? 0 : coordinates[:y], 
-        :face => coordinates[:face] || :north 
+        :face => coordinates[:face]  
         }
     end  
   end

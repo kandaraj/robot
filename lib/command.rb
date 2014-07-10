@@ -1,3 +1,4 @@
+require_relative 'position'
 
 class Command
   attr :position

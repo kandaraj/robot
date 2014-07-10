@@ -1,3 +1,5 @@
+require_relative 'robot'
+
 class Simulator
   attr :robot
 
@@ -7,14 +9,12 @@ class Simulator
 
   def execute(commands)
     command = commands.split
-
+    output = nil
 	case command[0].to_s.downcase 
+
 	when 'place'
-	  coord = command[1].split(',')
-	  x = coord[0].to_i
-	  y = coord[1].to_i
-	  face = coord[2].to_s
-	  robot.go_to(x,y,face)
+	  c = coordinates(commands)
+	  robot.go_to(c[:x],c[:y],c[:face]) if c.is_a?(Hash)
 
 	when 'move'
 	  robot.move_next
@@ -26,12 +26,27 @@ class Simulator
 	  robot.turn_right
 
 	when 'report'
-	  robot.coordinate
+	  result = robot.coordinates
+	  output = result ? "OUTPUT: #{result[:x]},#{result[:y]},#{result[:face]}" : "no report"
 
 	else
-	  puts 'invalid command'
+	  output = 'ERROR: invalid command'
     end
-    robot.coordinates
+    output
   end
 
+  def coordinates(commands)
+  	begin
+	  command = commands.split
+	  coord = command[1].split(',')
+	  x = Integer(coord[0]) 
+	  y = Integer(coord[1]) 
+	  face = 'north' if coord[2].nil? && x == 0 && y == 0	  	
+	  face = coord[2].to_s if face.nil? && coord[2].length > 0
+	  {:x=>x,:y=>y,:face=>face}
+  	rescue Exception => e
+  	  "invalid command #{e.message}"
+  	end
+
+  end
 end

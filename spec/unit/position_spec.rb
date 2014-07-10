@@ -26,6 +26,12 @@ describe Position do
     expect(position.current).to be_nil
   end
 
+  it('ignore on unknown direction') do
+    expect(table).to receive(:is_valid?).and_return(true)
+    position.change ({:x=>1,:y=>1,:face=>:something})
+    expect(position.current).to be_nil
+  end
+
   it('successfully move into the next available position : north') do
   	position.current_coordinates = {:x=>1,:y=>2,:face=>:north}
   	expect(table).to receive(:is_valid?).and_return(true)
