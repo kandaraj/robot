@@ -1,5 +1,5 @@
-robot
-=====
+Toy Robot Simulator
+===================
 
 A toy robot simulator for a ruby challange
 
@@ -15,8 +15,10 @@ run.rb
 Algorithm
 =========
 
-run.rb file_commands.txt
-	(or) takes command input
+Ok, this is the start, the following have changed a bit since I started writing tests, but it got me going.
+
+run.rb 
+	takes command input or file
 
 	simulator = Simulator.new
 	simulator.execute(command)
