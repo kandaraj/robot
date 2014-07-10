@@ -28,9 +28,6 @@ class Simulator
 	when 'report'
 	  result = robot.coordinates
 	  output = result ? "Output: #{result[:x]},#{result[:y]},#{result[:face].upcase}" : "no report"
-
-	else
-	  output = 'Error: invalid command'
     end
     output
   end
